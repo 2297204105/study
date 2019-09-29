@@ -1,0 +1,17 @@
+输入ip+端口  默认打开首页
+
+config = Config().config
+prefix = config.get('url_prefix', '')
+# app = Flask(__name__)
+app = Flask(__name__, static_url_path="", static_folder="../../dist")
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+app.config.update(config)
+db = SQLAlchemy(app)
+
+
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port=8081,debug=True)
