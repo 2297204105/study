@@ -1,0 +1,26 @@
+版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+原文链接：https://blog.csdn.net/qq_34545192/article/details/80177362
+//demo
+const express = require('express');
+const app = express();
+
+//设置允许跨域访问该服务.
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  //Access-Control-Allow-Headers ,可根据浏览器的F12查看,把对应的粘贴在这里就行
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Content-Type', 'application/json;charset=utf-8');
+  next();
+});
+
+app.get('/hello', function (req, res) {
+  res.json({})
+});
+
+const server = app.listen(8082, function () {
+  console.log('Express app server listening on port %d', server.address().port);
+});
+————————————————
+版权声明：本文为CSDN博主「ffiing」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_34545192/article/details/80177362
